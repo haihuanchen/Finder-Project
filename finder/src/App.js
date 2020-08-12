@@ -19,9 +19,6 @@ function App() {
         </Route>
       </Switch>
     </Router>
-      {/* Finder Cards */}
-      {/* Buttons below finder cards */}
-      {/* Chats Screen */}
     </div>
   );
 }

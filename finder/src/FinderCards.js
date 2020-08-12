@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TinderCard from 'react-tinder-card';
+import database from './firebase';
 import "./FinderCards.css"
 
 function FinderCards () {
-    const [people, setPeople] = useState([
-        {
-            name: "Steve Jobs",
-            url: 'https://www.biography.com/.image/t_share/MTY2MzU3OTcxMTUwODQxNTM1/steve-jobs--david-paul-morrisbloomberg-via-getty-images.jpg'
-        },
-        {
-            name: "Mark Zuckerberg",
-            url: 'https://about.fb.com/wp-content/uploads/2019/01/mz.jpg?fit=4655%2C3102'
-        }
-    ]);
+    const [people, setPeople] = useState([]);
+
+    useEffect(()=>{
+        database.collection('people').onSnapshot(snapshot =>(
+            setPeople(snapshot.docs.map(doc => doc.data()))
+        ))
+    }, []); //run this code once when the component loads and never again
 
     return(
         <div>
