@@ -2,20 +2,23 @@ import React from 'react';
 import './App.css';
 import Header from './Header'
 import FinderCards from './FinderCards'
+import SwipeButton from './SwipeButton'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import ChatsContainer from './ChatsContainer';
 
 function App() {
   return (
     <div className="app">
-    <Header />
     <Router>
       <Switch>
         <Route exact path='/'>
-          <h1>The Finder App Main Page</h1>
+          <Header />
           <FinderCards />
+          <SwipeButton />
         </Route>
         <Route path="/chat">
-          <h1>The Finder App Chat Page</h1>
+          <Header backButton="/"/>
+          <ChatsContainer />
         </Route>
       </Switch>
     </Router>
