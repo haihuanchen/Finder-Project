@@ -5,6 +5,7 @@ import FinderCards from './FinderCards'
 import SwipeButton from './SwipeButton'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ChatsContainer from './ChatsContainer';
+import ChatScreen from './ChatScreen'
 
 function App() {
   return (
@@ -16,9 +17,13 @@ function App() {
           <FinderCards />
           <SwipeButton />
         </Route>
-        <Route path="/chat">
+        <Route exact path="/chat">
           <Header backButton="/"/>
           <ChatsContainer />
+        </Route>
+        <Route path="/chat/:person">
+          <Header backButton="/chat"/>
+          <ChatScreen />
         </Route>
       </Switch>
     </Router>
