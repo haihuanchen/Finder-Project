@@ -16,16 +16,24 @@ function ChatScreen () {
 
     return(
         <div className='chatScreen'>
-            <p>You matched with Alexandra on March 23, 2020</p>
+            <p className="chatScreen-timestamp">You matched with Alexandra on March 23, 2020</p>
             {messages.map((message)=>(
-                <div className="chatScreen-message">
+                message.name ? (
+                    <div className="chatScreen-message">
                     <Avatar 
                         className="chatScreen-image"
                         alt={message.name}
                         src={message.image}
                     />
-                    <p>{message.message}</p>
-                </div>
+                      <p className="chatScreen-text">{message.message}</p>
+                    </div>
+                ) :(
+                    <div className="chatScreen-message">
+                        <p className="chatScreen-textUser">{message.message}</p>
+                    </div>
+                )
+                
+                  
             ))}
         </div>
     )
